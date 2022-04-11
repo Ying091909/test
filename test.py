@@ -8,3 +8,9 @@ def edit_distance(str1, str2):
                 d = 1
             edit[i][j] = min(edit[i - 1][j] + 1, edit[i][j - 1] + 1, edit[i - 1][j - 1] + d)
     return edit[len(str1)][len(str2)]
+# can I commit like this ?
+if __name__ == '__main__':
+    str1 = "li ying da ben dan";
+    str2 = "liing daben dan";
+    result = edit_distance(str1, str2)
+    print(result)
