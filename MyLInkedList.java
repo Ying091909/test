@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class MyLinkedList {
-    //定义链表节点
     static class ListNode{
         int val;
         ListNode next;
@@ -12,15 +11,12 @@ public class MyLinkedList {
         ListNode(int val){this.val=val;}
         ListNode(int val, ListNode next){this.val=val;this.next=next;}
     }
-    //定义成员变量
     int size;
     ListNode dummyhead;
-    //初始化
     public  MyLinkedList(){
         size=0;
         dummyhead=new ListNode(0);
     }
-    //获取index节点的值
     public int get(int index){
         ListNode cur = dummyhead;
         if(index < 0 || index > size){
@@ -32,14 +28,12 @@ public class MyLinkedList {
         }
         return cur.val;
     }
-    //头部添加节点
     public void addAtHead(int val){
         ListNode newNode = new ListNode(val);
         newNode.next = dummyhead.next;
         dummyhead.next = newNode;
         size++;
     }
-    //尾部添加节点
     public void addAtTail(int val){
         ListNode newNode = new ListNode(val);
         ListNode cur = dummyhead;
@@ -49,13 +43,10 @@ public class MyLinkedList {
         cur.next = newNode;
         size++;
     }
-    //index前添加节点
     public void addIndex(int val, int index){
         ListNode cur = dummyhead;
         ListNode newNode = new ListNode(val);
-        //index无效
         if(index < 0 || index > size){return;}
-        //移动cur直至index=0
         while(index != 0){
             cur = cur.next;
             index--;
@@ -64,7 +55,6 @@ public class MyLinkedList {
         cur.next = newNode;
         size++;
     }
-    //删除index处的节点
     public void deleteIndex(int index){
         ListNode cur = dummyhead;
         if(index < 0 || index > size){
@@ -77,7 +67,6 @@ public class MyLinkedList {
         cur.next = cur.next.next;
         size--;
     }
-    //链表翻转
     public ListNode reverseLinkedList(ListNode head){
         ListNode cur = head;
         ListNode pre = null;
@@ -89,7 +78,6 @@ public class MyLinkedList {
         }
         return head;
     }
-    //链表元素两两交换
     public ListNode swapElement(ListNode head){
         ListNode cur = dummyhead;
         while(cur.next != null & cur.next.next != null){
@@ -102,14 +90,12 @@ public class MyLinkedList {
 
     }
 
-    //打印输出
     public  void print(MyLinkedList myLinkedList){
         for(int i = 1; i <= myLinkedList.size; i++){
             System.out.println(myLinkedList.get(i));
         }
     }
 
-    //创建输入
     public static ListNode createListNode(int[] input){
         if (input.length == 0) return null;
         ListNode head = new ListNode();
@@ -123,11 +109,9 @@ public class MyLinkedList {
         }
         return  head;
     }
-    //链表交点
     public ListNode getIntersectionNode(ListNode headA, ListNode headB){
         ListNode a = headA;
         ListNode b = headB;
-        //获取2个链表的长度
         int lenOfa = 0;
         while(a!=null){
             lenOfa++;
@@ -138,7 +122,6 @@ public class MyLinkedList {
             lenOfb++;
             b = b.next;
         }
-        //a总是更长的链表
         if(lenOfb > lenOfa){
             int temp = lenOfa;
             lenOfa = lenOfb;
@@ -146,7 +129,6 @@ public class MyLinkedList {
             a = headB;
             b = headA;
         }
-        //移动a
         int diffLen = lenOfa - lenOfb;
         while(diffLen-- > 0 && a !=null){
             a = a.next;
